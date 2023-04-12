@@ -1,0 +1,21 @@
+.logo {
+  height: 100px;
+  width: 100px;
+  margin-left: 100px;
+}
+
+.header{
+  display: flex;
+  justify-content:space-between;
+}
+
+.nav-items-container>ul{
+  display: flex;
+  list-style-type: none;
+  margin-right: 100px;
+}
+
+.nav-items-container>ul>li{
+  padding: 8px;
+  margin: 8px;
+}
