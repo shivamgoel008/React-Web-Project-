@@ -7,6 +7,8 @@
 .header{
   display: flex;
   justify-content:space-between;
+  border: 1px solid black;
+  border-radius: 16px;
 }
 
 .nav-items-container>ul{
@@ -18,4 +20,30 @@
 .nav-items-container>ul>li{
   padding: 8px;
   margin: 8px;
+}
+
+.res-card{
+  height: 300px;
+  width: 200px;
+  border-radius: 16px;
+  padding: 5px;
+  margin: 10px;
+}
+
+
+.res-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.res-card:hover{
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.res-logo{
+  width: 100px;
+}
+
+.search{
+  margin: 20px;
 }
