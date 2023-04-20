@@ -1084,6 +1084,13 @@ const Header = () => {
 };
 
 const RestaurantCard = (props) => {
+  const { 
+    cloudinaryImageId, 
+    name, 
+    cuisines, 
+    avgRating, 
+    deliveryTime 
+  } = props.resData.data;
   return (
     <React.Fragment>
       <div className="res-card">
@@ -1092,23 +1099,22 @@ const RestaurantCard = (props) => {
           alt="res-logo"
           src={
             "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-            props.resData.data.cloudinaryImageId
+            cloudinaryImageId
           }
         />
-        <h3>{props.resData.data.name}</h3>
-        <h4>popular cuisines {props.resData.data.cuisines[1]}</h4>
-        <h4>Avg Rating {props.resData.data.avgRating}</h4>
-        <h4>Delivery Time {props.resData.data.sla.deliveryTime}</h4>
+        <h3>{name}</h3>
+        <h4>popular cuisines {cuisines.join(", ")}</h4>
+        <h4>Avg Rating {avgRating}</h4>
+        <h4>Delivery Time {deliveryTime}</h4>
       </div>
     </React.Fragment>
   );
 };
 
 const Body = () => {
-
-  const steps =[];
-  for(let i=0;i<8;i++){
-    steps.push(<RestaurantCard resData={resList[i]}/>);
+  const steps = [];
+  for (let i = 0; i < 8; i++) {
+    steps.push(<RestaurantCard resData={resList[i]} />);
   }
   return (
     <React.Fragment>
@@ -1118,9 +1124,7 @@ const Body = () => {
           search
         </div>
 
-        <div className="res-container">
-          {steps}
-        </div>
+        <div className="res-container">{steps}</div>
       </div>
     </React.Fragment>
   );
