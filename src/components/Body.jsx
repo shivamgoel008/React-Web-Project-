@@ -1,32 +1,39 @@
 import React, { useEffect, useState } from "react";
 import resList from "../Utlis/mockData.js";
 import RestaurantCard from "./RestaurantCard.jsx";
+import Shimmer from "./Shimmer.jsx";
 
 const Body = () => {
   // hooks => [variable, function to update this varibale] and is an array
-  const [listOfRestaurants, setListOfRestaurants] = useState(resList);
+  const [listOfAllRestaurants, setListOfAllRestaurants] = useState([]);
+  const [listOfFilteredRestaurants, setListOfFilteredRestaurants] = useState([]);
+
   const [searchText, setSearchText] = useState("");
-  useEffect(()=>{console.log(getRestaurants())},[])
+  useEffect(() => {
+    console.log(getRestaurants());
+  }, []);
 
-  async function getRestaurants(){
-    const data =await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5135223&lng=77.4135367&page_type=DESKTOP_WEB_LISTING");
-    const json=await data.json();
-    console.log(json);
-    setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards)
-  }
-
-  const x = [];
-
-  for (i = 0; i < listOfRestaurants.length; i++) {
-    x.push(
-      <RestaurantCard
-        key={listOfRestaurants[i].data.id}
-        resData={listOfRestaurants[i]}
-      />
+  async function getRestaurants() {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5135223&lng=77.4135367&page_type=DESKTOP_WEB_LISTING"
     );
+    const json = await data.json();
+    console.log(json);
+    setListOfAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    setListOfFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
   }
 
-  return (
+  if(listOfFilteredRestaurants.length===0){
+    <Shimmer/>
+
+    return(
+      <h1>No Result Found</h1>
+    )
+  }
+
+  return listOfAllRestaurants?.length === 0 ? (
+    <Shimmer />
+  ) : (
     <React.Fragment>
       <div className="body">
         <input
@@ -34,17 +41,19 @@ const Body = () => {
           placeholder="Search"
           type="text"
           value={searchText}
-          onChange={(e)=>{
+          onChange={(e) => {
             setSearchText(e.target.value);
           }}
         />
 
         <button
-        className="search-btn"
-        onClick={() => {
-          const filterData = listOfRestaurants.filter((restaurant) => restaurant.data.name.includes(searchText));
-          setListOfRestaurants(filterData)
-        }}
+          className="search-btn"
+          onClick={() => {
+            const filterData = listOfAllRestaurants.filter((restaurant) =>
+              restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
+            );
+            setListOfFilteredRestaurants(filterData);
+          }}
         >
           Search
         </button>
@@ -53,12 +62,10 @@ const Body = () => {
           <button
             className="filter-btn"
             onClick={() => {
-              const filterData = listOfRestaurants.filter(
+              const filterData = listOfFilteredRestaurants.filter(
                 (res) => res.data.avgRating >= 4
               );
-              console.log(listOfRestaurants);
-              console.log(filterData);
-              setListOfRestaurants(filterData);
+              setListOfFilteredRestaurants(filterData);
             }}
           >
             Top Rated Restaurants
@@ -66,7 +73,7 @@ const Body = () => {
         </div>
 
         <div className="res-container">
-          {listOfRestaurants.map((restaurant) => (
+          {listOfFilteredRestaurants.map((restaurant) => (
             <RestaurantCard key={restaurant.data.id} resData={restaurant} />
           ))}
         </div>
