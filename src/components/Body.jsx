@@ -6,7 +6,9 @@ import Shimmer from "./Shimmer.jsx";
 const Body = () => {
   // hooks => [variable, function to update this varibale] and is an array
   const [listOfAllRestaurants, setListOfAllRestaurants] = useState([]);
-  const [listOfFilteredRestaurants, setListOfFilteredRestaurants] = useState([]);
+  const [listOfFilteredRestaurants, setListOfFilteredRestaurants] = useState(
+    []
+  );
 
   const [searchText, setSearchText] = useState("");
   useEffect(() => {
@@ -23,12 +25,10 @@ const Body = () => {
     setListOfFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
   }
 
-  if(listOfFilteredRestaurants.length===0){
-    <Shimmer/>
+  if (listOfFilteredRestaurants.length === 0) {
+    <Shimmer />;
 
-    return(
-      <h1>No Result Found</h1>
-    )
+    return <h1>No Result Found</h1>;
   }
 
   return listOfAllRestaurants?.length === 0 ? (
@@ -50,7 +50,9 @@ const Body = () => {
           className="search-btn"
           onClick={() => {
             const filterData = listOfAllRestaurants.filter((restaurant) =>
-              restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
+              restaurant?.data?.name
+                ?.toLowerCase()
+                ?.includes(searchText.toLowerCase())
             );
             setListOfFilteredRestaurants(filterData);
           }}
