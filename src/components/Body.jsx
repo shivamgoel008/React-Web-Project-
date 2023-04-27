@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import resList from "../Utlis/mockData.js";
 import RestaurantCard from "./RestaurantCard.jsx";
 import Shimmer from "./Shimmer.jsx";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   // hooks => [variable, function to update this varibale] and is an array
@@ -76,7 +77,10 @@ const Body = () => {
 
         <div className="res-container">
           {listOfFilteredRestaurants.map((restaurant) => (
-            <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+            <Link to={"/restaurant/"+restaurant.data.id} key={restaurant.data.id}>
+            
+            <RestaurantCard  resData={restaurant} />
+            </Link>
           ))}
         </div>
       </div>
