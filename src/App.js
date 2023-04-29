@@ -40,7 +40,7 @@ const appRouter=createBrowserRouter([
         children:[
           {
             path:"profile",    // path:profile=> localhost:1234/about/profile
-            element: <ProfileClass name={"shivam"}/>,  // path:/profile => localhost:1234/profile
+            element: <ProfileClass/>,  // path:/profile => localhost:1234/profile
             // element: <Profile name={"Shivam"}/>
           }
         ]

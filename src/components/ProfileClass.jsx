@@ -1,38 +1,69 @@
+import { userInfo } from "os";
 import React from "react";
+import { json } from "stream/consumers";
 
 class ProfileClass extends React.Component {
   constructor(props) {
     super(props);
+    console.log("Constructor")
     this.state = {
       count: 0,
       count2: 0,
+      userInfo: {},
     };
   }
 
+  async componentDidMount() {
+    console.log("Component Did mount ");
+    const data = await fetch("https://api.github.com/users/shivamgoel008");
+    const json = await data.json();
+    this.setState({
+      userInfo:json,
+    });
+    console.log(json);
+  }
+
+
+  componentDidUpdate(){
+    console.log("Component updated");
+  }
+
+  componentWillUnmount(){
+    console.log("Component Unmount")
+  }
+
   render() {
-    // console.log(count);
+    console.log("rendering");
     return (
       <React.Fragment>
         <h1>Class Based Profile Component</h1>
-        <h3>My name is {this.props.name} </h3>
+        <img src={this.state.userInfo.avatar_url}/>
+        <h3>My name is {this.state.userInfo.name} </h3>
+        <h3>Living in city: {this.state.userInfo.location}</h3>
         
-       
-        <button
-          onClick={() => {
-            // we can set the value of state varibles partially
-            this.setState({
-              count: 1,
-              count2: 5,
-            });
-          }}
-        >
-          on Click
-        </button>
-
-        <h3>Count: {this.state.count}, {this.state.count2}</h3>
+        {console.log(userInfo)}
       </React.Fragment>
     );
   }
 }
 
 export default ProfileClass;
+
+
+/*
+-mounting
+child constructor 
+child render 
+componentDidMount 
+API call 
+setState
+
+-Updating 
+render 
+componentdidUpdate
+
+-Unmounting 
+componentWillUnmount
+
+
+*/
