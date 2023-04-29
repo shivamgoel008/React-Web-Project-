@@ -8,6 +8,8 @@ import Headers from "./components/Header.jsx";
 import Contact from "./components/Contact.jsx";
 import Body from "./components/Body.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx"
+import Profile from "./components/Profile.jsx";
+import ProfileClass from "./components/ProfileClass.jsx";
 
 
 const AppLayout = () => {
@@ -34,7 +36,14 @@ const appRouter=createBrowserRouter([
       },
       {
         path:"/about",
-        element:<About/>
+        element:<About/>,
+        children:[
+          {
+            path:"profile",    // path:profile=> localhost:1234/about/profile
+            element: <ProfileClass name={"shivam"}/>,  // path:/profile => localhost:1234/profile
+            // element: <Profile name={"Shivam"}/>
+          }
+        ]
       },
       {
         path:"/contact",
