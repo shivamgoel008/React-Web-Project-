@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import resList from "../Utlis/mockData.js";
+import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard.jsx";
 import Shimmer from "./Shimmer.jsx";
-import { Link } from "react-router-dom";
+import useOnline from "../Utlis/useOnline.js";
 
 const Body = () => {
   // hooks => [variable, function to update this varibale] and is an array
@@ -24,6 +24,12 @@ const Body = () => {
     console.log(json);
     setListOfAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     setListOfFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+  }
+
+  const online=useOnline();
+
+  if(!online){
+    return (<h1>🦉No Internet Connection</h1>)
   }
 
   if (listOfFilteredRestaurants.length === 0) {
