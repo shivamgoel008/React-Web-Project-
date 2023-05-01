@@ -6,16 +6,27 @@ const RestaurantCard = (props) => {
     props.resData.data;
   return (
     <React.Fragment>
-      <div className="res-card">
+      <div className="res-card max-w-sm min-h-fit rounded-3xl overflow-hidden shadow-lg m-14">
         <img
-          className="res-logo"
+          className="res-logo w-full"
           alt="res-logo"
           src={CDN_URL + cloudinaryImageId}
         />
-        <h3>{name}</h3>
-        <h4>popular cuisines {cuisines.join(", ")}</h4>
-        <h4>Avg Rating {avgRating}</h4>
-        <h4>Delivery Time {deliveryTime}</h4>
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">{name}</div>
+          <p class="text-gray-700 text-base">
+            popular cuisines {cuisines.join(", ")}
+          </p>
+          <div class="px-6 pt-4 pb-2">
+            <span class="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+              #Avg Rating {avgRating}
+            </span>
+            <span class="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+              Delivery Time {deliveryTime}
+            </span>
+            
+          </div>
+        </div>
       </div>
     </React.Fragment>
   );
