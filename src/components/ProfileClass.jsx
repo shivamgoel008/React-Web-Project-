@@ -1,6 +1,6 @@
 import { userInfo } from "os";
 import React from "react";
-import { json } from "stream/consumers";
+import userContext from "../Utlis/userContext";
 
 class ProfileClass extends React.Component {
   constructor(props) {
@@ -36,6 +36,9 @@ class ProfileClass extends React.Component {
     console.log("rendering");
     return (
       <React.Fragment>
+        <userContext.Consumer>
+          {(value)=>console.log(value)}
+        </userContext.Consumer>
         <h1>Class Based Profile Component</h1>
         <img src={this.state.userInfo.avatar_url}/>
         <h3>My name is {this.state.userInfo.name} </h3>

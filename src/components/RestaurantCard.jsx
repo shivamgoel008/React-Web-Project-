@@ -22,7 +22,7 @@ const RestaurantCard = (props) => {
               #Avg Rating {avgRating}
             </span>
             <span class="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-              Delivery Time {deliveryTime}
+              #Delivery Time {deliveryTime}
             </span>
             
           </div>

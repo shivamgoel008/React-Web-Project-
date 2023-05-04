@@ -1,9 +1,12 @@
-import React from "react";
-import { LOGO_URL } from "../Utlis/constants";
+import React,{useContext} from "react";
 import { Link } from "react-router-dom";
-import {AiOutlineHome} from "react-icons/fa"
-
+import { LOGO_URL } from "../Utlis/constants";
+import userContext from "../Utlis/userContext";
+import { useContext } from "react";
 const Header = () => {
+
+  const user=useContext(userContext)
+  console.log(user);
   return (
     <React.Fragment>
       <div className="flex justify-between shadow-lg mb-8">
@@ -27,7 +30,7 @@ const Header = () => {
             <li>
               <Link to ="/instamart">Instamart</Link>
             </li>
-            <li>Cart</li>
+            <li>,{console.log(user.user.name)}Cart</li>
           </ul>
         </div>
       </div>
