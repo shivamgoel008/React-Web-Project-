@@ -11,6 +11,8 @@ import ProfileClass from "./components/ProfileClass.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import Shimmer from "./components/Shimmer.jsx";
 import userContext from "./Utlis/userContext.js";
+import { Provider } from "react-redux";
+import store from "./Utlis/store.js";
 const Instamart = lazy(() => import("./components/Instamart"));
 
 const AppLayout = () => {
@@ -19,7 +21,7 @@ const AppLayout = () => {
     email:"shivamgupta@gmail.com"
   })
   return (
-    <React.Fragment>
+    <Provider store={store}>
       <userContext.Provider
       value={{
         user:user,
@@ -30,7 +32,7 @@ const AppLayout = () => {
         <Footer />
       </div>
       </userContext.Provider>
-    </React.Fragment>
+    </Provider>
   );
 };
 

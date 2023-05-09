@@ -44,7 +44,7 @@ const Body = () => {
     <React.Fragment>
       <div className="body">
         <input className="search-input" />
-        <label class="flex">
+        <label className="flex">
           <span className="absolute inset-y-0 left-0 flex items-center pl-2">
             <svg className="h-5 w-5 fill-slate-300" viewBox="0 0 20 20" />
           </span>
