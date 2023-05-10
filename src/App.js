@@ -13,6 +13,7 @@ import Shimmer from "./components/Shimmer.jsx";
 import userContext from "./Utlis/userContext.js";
 import { Provider } from "react-redux";
 import store from "./Utlis/store.js";
+import Cart from "./components/Cart.jsx";
 const Instamart = lazy(() => import("./components/Instamart"));
 
 const AppLayout = () => {
@@ -73,13 +74,14 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path:"/cart",
+        element:<Cart/>,
+      }
     ],
   },
-  {
-    path: "/about",
-    element: <About />,
-    errorElement: <Error />,
-  },
+  
+  
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

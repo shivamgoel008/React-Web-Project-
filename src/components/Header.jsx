@@ -6,7 +6,7 @@ import userContext from "../Utlis/userContext";
 const Header = () => {
   const user = useContext(userContext);
   console.log(user);
-  const cartItems = useSelector(store => store.cart.items);
+  const cartItems = useSelector((store) => store.cart.items);
   console.log(cartItems);
   return (
     <React.Fragment>
@@ -31,7 +31,9 @@ const Header = () => {
             <li>
               <Link to="/instamart">Instamart</Link>
             </li>
-            <li>Cart: {cartItems.length}</li>
+            <li>
+              <Link to ="/cart">Cart: {cartItems.length}</Link>
+            </li>
           </ul>
         </div>
       </div>

@@ -2,19 +2,24 @@ import React from "react";
 
 const RestaurantMenuCard = (props) => {
   return (
-    <React.Fragment>
+    <React.Fragment className="">
       {console.log(props)}
 
-      <div className="card lg:card-side bg-base-100 shadow-xl">
-  <figure><img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/h4ppdoav5fdi0gsswpab" alt="Album"/></figure>
-  <div className="card-body">
-    <h2 className="card-title">New album is released!</h2>
-    <p>Click the button to listen on Spotiwhy app.</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Listen</button>
-    </div>
-  </div>
-</div>
+      <div className="flex justify-between mx-40 card lg:card-side bg-base-100 shadow-xl p-4 border-2 border-b-gray-500 rounded-3xl">
+        <div className="flex-col">
+          <h3 className="">MenuItem Name</h3>
+          <h5 className="my-2">₹Price</h5>
+        </div>
+
+        <div class="relative w-1/6 h-1/6 ">
+          <img className="rounded-3xl" src="https://www.kindacode.com/wp-content/uploads/2022/06/big-boss.jpeg" />
+          <div className="absolute bottom-0 left-0 right-0 mx-4 my-2">
+            <button className="rounded-3xl bg-white mt-2 ml-12 text-sm text-green-600 h-6 w-16">
+            ADD
+            </button>
+          </div>
+        </div>
+      </div>
     </React.Fragment>
   );
 };
