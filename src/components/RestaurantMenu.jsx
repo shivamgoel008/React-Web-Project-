@@ -30,10 +30,7 @@ const RestaurantMenu = () => {
     menuList: menuList,
   };
 
-  const dispatch=useDispatch();
-  handleAddItem=(menuItemName)=>{
-    dispatch(addItem(menuItemName))
-  }
+  
 
   return (
     <div className="">
@@ -42,12 +39,12 @@ const RestaurantMenu = () => {
       <RestaurantMenuCard menuList={obj} />
 
       <h1>This is menu of {useParams().resId}</h1>
-      <h4>{restaurant?.data?.cards[0]?.card?.card?.info.name}</h4>
+      {/* <h4>{restaurant?.data?.cards[0]?.card?.card?.info.name}</h4>
       <h4>{restaurant?.data?.cards[0]?.card?.card?.info.areaName}</h4>
       <h4>{restaurant?.data?.cards[0]?.card?.card?.info.city}</h4>
       <h4>{restaurant?.data?.cards[0]?.card?.card?.info.avgRating}</h4>
       <h4>{restaurant?.data?.cards[0]?.card?.card?.info.costForTwo}</h4>
-      
+       */}
       <div >
         <ul>
           {menu
@@ -55,8 +52,9 @@ const RestaurantMenu = () => {
             ?.map((res) =>
               res?.card?.card?.itemCards?.map((res2) => (
                 <div className="">
-                <li>{res2?.card.info?.name}</li>
-                <button className="bg-sky-300" onClick={()=>handleAddItem(res2?.card.info)}>Add Item</button>
+                  <RestaurantMenuCard key={res2.card?.info?.id} menuData={res2?.card?.info}/>
+                {/* <li>{res2?.card.info?.name}</li> */}
+                
                 </div>
               ))
             )}

@@ -5,3 +5,5 @@ export const LOGO_URL =
 export const FETCH_MENU_HEAD_URL =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5135223&lng=77.4135367&restaurantId=";
 export const FETCH_MENU_TAIL_URL = "&submitAction=ENTER";
+
+export const GENERIC_FOOD_URL="https://downtowncl.org/wp-content/uploads/2016/08/1977_Food-Drink-Generic-Logo.jpg"
