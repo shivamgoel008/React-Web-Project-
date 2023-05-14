@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useSelector } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../Utlis/constants";
 import userContext from "../Utlis/userContext";
@@ -9,7 +9,7 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
   console.log(cartItems);
   return (
-    <React.Fragment>
+    <Provider>
       <div className="flex justify-between shadow-lg mb-8">
         <Link to="/">
           <div className="logo-container p-3">
@@ -37,7 +37,7 @@ const Header = () => {
           </ul>
         </div>
       </div>
-    </React.Fragment>
+    </Provider>
   );
 };
 

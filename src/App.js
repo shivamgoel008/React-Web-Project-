@@ -14,6 +14,7 @@ import userContext from "./Utlis/userContext.js";
 import { Provider } from "react-redux";
 import store from "./Utlis/store.js";
 import Cart from "./components/Cart.jsx";
+import { Provider } from "react";
 const Instamart = lazy(() => import("./components/Instamart"));
 
 const AppLayout = () => {
